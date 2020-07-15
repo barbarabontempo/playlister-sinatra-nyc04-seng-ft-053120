@@ -1,15 +1,13 @@
-#require 'rack-flash'
-
+require 'rack-flash'
 class SongsController < ApplicationController
-    #use Rack::Flash 
-
+    
     get '/songs' do
         @songs = Song.all 
-        erb :'/songs/index' 
+        erb :'/songs/index'
     end
 
     get '/songs/new' do
-        erb :'/songs/new' #show new songs view
+        erb :'/songs/new'
     end
 
     get '/songs/:slug' do
@@ -17,11 +15,9 @@ class SongsController < ApplicationController
         erb :'/songs/show'
     end
 
-
-
-
-
+    post '/songs' do
+        @song = Song.create(params[:song])
+        erb :'/song/show'
+    end
 
 end
-
-
